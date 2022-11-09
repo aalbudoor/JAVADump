@@ -1,0 +1,65 @@
+Inner class to the rescue
+
+- you can have one class nested inside another. its easy. just make sure
+tat the definition for the inner class is inside the curly braces of the outer class.
+
+		i.e Simple inner class
+		
+		Class MyOuterClass {
+		
+			Class MyInnerClass {
+					
+					void go() {
+					
+					}
+				}
+			}
+		
+		// inner class is fully enclosed by outer class
+	
+- an Inner class gets a special pass to use the outer class's stuff.
+Even the private stuff. And the inner class can use those private variables anf methods of the outer class
+as if the varibales and memebts were defined in the inner class. Thats whats so handy about inner classes - they have most of the
+ benefits of a normal class, but with special access rights
+ 
+ 
+ i.e Inner class using an outer class variable
+ 
+ 	Class MyOUterClass {
+ 		
+ 		private int x;
+ 		
+ 			Class myInnerClass {
+ 			
+ 				void go() {
+ 				
+ 				x = 42;
+ 				
+ 				}
+ 		}//close inner
+ 		
+ 	}//close outer
+
+ 	
+ An inner CLass instance must be tied to an outer Class instance*.
+ 
+ - remember, when we talk about an inner class accessing something in the outer class
+ were really talking about an instance of the inner class accessingsomething in an instance of the outer class.
+ But which instance?
+ 
+ Can any arbitrary instance of the inner class acess the methods 
+ and variables of the outer class NO!!!
+ 
+ - An inner object must be tied to a specific outer object on the heap
+ 
+ 
+ 
+ Steps:
+ 
+ 1. Make an instance of the outer class
+ 
+ 2. Make an instance of the inner class, by using the insatnce of the outer class.
+ 
+ 3. The outer and inner objects are now intimately linked //These two objects on the heap 
+ 															// have a special bond, the inner can use
+ 															//the outers variables (and vice versa)

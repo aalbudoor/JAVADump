@@ -1,0 +1,29 @@
+
+//To communicate over a socket connection, you use streams, just like steralization
+
+1. Make a scoket connection to the server
+
+	Socket chatSocket = new Socket("127.0.0.1" , 5000)
+	
+	- "127.0.0.1"is the IP address for "local host", in other words
+	the one the code is running on
+	
+	- 5000 is the port number, which you know because we told you that 5000 is the port
+	number for our chat server
+
+2. Make an InputStreamReader chained to the Sockets low-level (connection) input Stream
+
+	InputStreamReader stream = new InputStreamReader(chatSocket.getInputStream());
+	
+	- InputStreamReader is a bridge between low-level byte stream(like the one coming from the socket) and
+	a high-level, character stream (like the BufferedReader were after as out top of the chain stream)
+	
+	- All we have to do is aSK the socket for an inputStream. its a low-level connection stream, but were
+	chaining it to something more text-friendly
+	
+3.Make a BufferedReader and read!
+
+	BufferedReader reader = new BufferedReader(stream);
+	String message = reader.readLine();
+	
+	- Chain the BufferedReader to the inputStreamReader (Which was chained to the low-level connection stream we got from the socket)

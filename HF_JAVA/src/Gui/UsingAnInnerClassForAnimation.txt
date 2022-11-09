@@ -1,0 +1,44 @@
+Using an inner class for Animation
+
+- we saw why inner classes are handy for event listeners, because you get to implement the same event-handling method 
+more than once.
+
+- now we will lokk at how useful inner class is when used as a subclass of something the outer class doesnt extend.
+in other words when the outer and inner class are in different inheritance trees
+
+- out goal is to make a simple animation, where the circle moves across the screen from the upper left down to the lower right.
+
+
+
+		How simple animation works:
+		
+		1. Paint an object at a particular x and y coordinate
+		
+			g.fillOval(20,50,100,100); 
+			
+			- 20 pixels from the left
+			-50 pixels from the top
+		
+		2.Repaint the object at a different x and y coordinate 
+			
+			g.fillOval(25,55,100,100)
+			
+			- 25 pixels from the left
+			-55 pixels from the top
+			(the object moved alittle down to the right)
+			
+		3.Repeat the previous step with changing x and y values
+		for as long as the animation is supposed to continue
+		
+		
+	What we really want is something like...
+	
+	class MyDrawPanel extends JPanel {
+	
+		public void paintComponent(Graphics g) {
+			
+			g.setColor(Color.orange);
+			g.fillOval(x,y,100,100);		//each time paintComponent() is called
+											//the oval gets painted at a different location
+			}
+	}

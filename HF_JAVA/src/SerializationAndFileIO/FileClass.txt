@@ -1,0 +1,39 @@
+// A File object repersents the name and path of a file or directory on disk, for example
+
+		/user/kathy/Data/GaemFile.txt
+
+//But it does NOT repersent, or give you access to, the data in the file
+
+
+Some Things you can do with a File object:
+
+1.Make a File Object repersenting an existing file:
+
+	File f = new File("MyCode.txt");
+	
+2.Make a new Directoy
+
+	File dir = new File("Chapter7");
+	dir.mkdir();
+	
+3. List the contents of a directoy
+
+	if (dir.isDirectoy()) {
+		
+		String[] ditContents = dit.list();
+		
+		for (int i = 0 ; i < dirContents.lenght; i++) {
+		System.out.println(dirContents[i]);
+		
+		}
+	}
+
+4. Get the absolute path of a file or directory 
+
+	System.out.println(dir.getAbsolutePat());
+	
+5. Delete a file or directoy (return true if succesful)
+
+	boolean isDeleted = f.delete();
+
+

@@ -1,0 +1,33 @@
+-Each time an object is serialized, the object (including every object in its graph) is 'stamped' with
+a version ID number for the objects class.
+
+The ID is called the serialVersionId.
+
+- as An object is being deserialized, if the class has changed since the object was serialized, the class could have a different serialVersionUID,
+and deserialization will fail!!
+
+
+Steps:
+
+- when you think your class might evolve after someone has serialized objects from it....
+
+1. Use the serialver command-line tool to get the versionID for your class
+
+
+2. paste te output into your class
+
+	public class Dog {
+	
+		static fila long serialVersionUID = 
+											-6543297473910L;
+											
+		private String name;
+		private int size;
+		
+		//method code here
+	}
+	
+3. Be sure that when you make changes to the class, you take responsibility in your code for the consequences
+of the changes you made to the class! for example, be sure that your new Dog class can deal with an old Dog being deserialized with defualt values
+for instance variables added to the class after the Dog was serialized 
+	

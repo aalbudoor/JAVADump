@@ -1,0 +1,14 @@
+
+Step 3: generate stubs and skeletons
+
+
+1. run rmic on the remote implementation class (not the remote interface)
+
+	go on terminal and write - rmic MyRemoteImpl
+
+- notice that you dont say ".class" in the end. just the class name 
+
+- it spits out two new classes for the helper objects.
+
+- the classes will land on your current directory (i.e whatver you did a cd to). 
+- Remember rmic must be able to see your implementations is 

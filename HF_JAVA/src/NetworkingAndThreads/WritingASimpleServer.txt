@@ -1,0 +1,29 @@
+
+// A socket server which waits for clients request (when a client makes a new socket()) and a plain old socket to use for communications with the 
+client
+
+
+How it works:
+
+1. Server application makes a ServerSocket, on a specific port
+	
+	ServerSocket serverSocket = new ServerSocket(4242);
+	
+	- This starts the server application listening for client
+	requests coming in for port 4242.
+	
+2. Client makes a socket connection to the server application
+
+	Socket sock = new Socket("190.165.1.103", 4242);
+	
+	- Client knows the IP address and port number
+	(published or given to him by whomever configures the server app to be on that port)
+	
+3. Server makes a new Socket to communicate with this client
+
+	Socket sock = server.accept();
+	
+	- the accept() method blocks(just sits there) while its waiting for a client Socket connection. When its
+	waiting for a client Socket connection. When a client finally tries to connect, the method returns a plain old Socket(on a different port)
+	that knows how to communicate with the client (i.e, knows the clients IP address and port number). The socket is on a different 
+	port than the serverSocket, so that the ServerSocket can go back to waiting for other clients

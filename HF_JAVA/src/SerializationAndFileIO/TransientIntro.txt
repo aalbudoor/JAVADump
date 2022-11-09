@@ -1,0 +1,30 @@
+//Mark an instance variable as transient if it cant (or shouldnt) be saved
+
+//If you want an instance variable to be skipped by the serialization process, mark the variable with the
+//'transient' keyword.
+
+
+import java.net.*;
+
+class Chat implements Serializable {
+		
+		transient String currentID;
+		
+		String userName;
+		
+		//more code
+	
+	}
+	
+- transient says, dont save this variable during serialization, just skip it"
+
+- userNAme variable will be saved as part of the objects state during serialization
+
+- If you have an instance variable that cant be saved because it isnt serializable, you can mark that variable with the transient
+keyword and the serialization process will skip right over it.
+
+
+- So why would a variable not be serializable?
+
+- it could be the class designer simply forgot to make the class implement Serializable. or since you cant save network connections, threads or 
+file objects

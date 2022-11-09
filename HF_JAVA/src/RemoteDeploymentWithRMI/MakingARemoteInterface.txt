@@ -1,0 +1,31 @@
+Step one: Make a remote interface
+
+1. extend java.rmi.Remote
+
+- Remote is a marker interface, which means it has no methods. It has special meaning for RMI, though follow tis rule
+Notice that we say 'extends' here. one interface is allowed to extend another interface
+
+	public interface MyRemote extends Remore {
+	
+- your interface has to announce that its for remote method calls. An interface cant implement anything, but it can extenf other interfaces
+
+
+2. Declare that all methods throw a RemoteException
+
+	import java.rmi.*;
+	
+	public interface MyRemote extends Remote {
+		
+		public String sayHello() throws RemoteException;
+	}
+	
+- Every Remote method call is considered 'Risky'. declaring RemoteException on every method forces the client to pay attention and acknowledge that 
+things might not work.
+
+
+3. Be sure arguments and return values are primitives or Serializable
+
+	public String sayHello() throws RemoteException;
+	
+- the 'String' return value is gonna be shipped over the wire from the server back to the client, so it must be serializable. THats how
+ars and return values get packaged up and sent.

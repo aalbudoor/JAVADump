@@ -1,0 +1,26 @@
+
+
+How does the client get the stub object?
+
+- the client has to get the stub object, since thats the ting the client will call methods on. And thats where the RMI registery comes in.
+ The client does a 'Look up', like going to the white pages of a phone book, and essentially says
+ "Here is a name and id like the stub that goes with the name"
+ 
+ 
+ 	MyRemote service = (MyRemote) Naming.lookup("rmi://127.0.0.1/Remote Hello");
+ 	
+ - The client alwasy uses the remote implementation as the type of the service. In fact, the client nevr needs to know the actual class name of you
+ remote service
+ 
+ - you have to cast it to the interface, since the look up method returns type object.
+ 
+ - the lookup() is a static method of the Naming class
+ 
+ - your host name or IP address
+ 
+ - after the host name or IP address you must include the name that the service was registered under
+ 
+ 
+ 
+ 
+ 

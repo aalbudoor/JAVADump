@@ -1,0 +1,57 @@
+
+
+public class QuizCardBuilder {
+
+	public void go() {
+	
+	//build and display gui
+	
+	}
+	
+	private class NextCardListener implements ActionListener {
+		
+		public void actionPerformed(ActionEvent ev) {
+		
+		//add the current card to the list and clear the text areas .
+		
+		//triggered when the user hits 'Next Card' button; means the 
+		//user wants to store that card in the list and start a new card
+		
+		}
+	}
+	
+	private class SaveMenuListener implements ActionLister {
+		
+		public void actionPerformed() {
+		
+		//bring up a file dialoge box 
+		//let the user name and save the set
+		
+		//triggered when use choose 'save' from the File menu;
+		//means the user wants to save all the cards in the current list as a 'set'
+		
+		}
+	}
+	
+	private class NewMenuListener implements ActionListener {
+	
+		public void actionPerformed() {
+			
+			//clear out the card list, and clear out the text areas
+			
+			//triggered by choosing 'New' from the file menu;
+			//means the user wants to start a brand new set (so we clear
+			//out the card list and text areas)
+			
+		}
+		
+	}
+	
+	private void saveFile(File file) {
+	
+	//iterate through the list of cards, and write each one out to a text file
+	//in a parseable way (in other words, with cleat seperations between parts)
+	
+	}
+	
+}

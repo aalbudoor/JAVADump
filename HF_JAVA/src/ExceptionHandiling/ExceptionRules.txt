@@ -1,0 +1,39 @@
+
+
+1. You cannot have a catch or finally without try 
+
+	void do() {
+		
+		Foo f = new Foo();
+		f.foof();
+		catch(FooException ex) {...}
+	}
+	
+2. You cannot put code between the try and catch 
+
+	try {
+		x.doStuff();
+	}
+		int y = 43;
+	
+	} catch (Exception ex)
+	
+
+3. A try MUST be followed by either a catch or finally
+
+	try {
+		x.doStuff();
+	
+		} finally {
+		//cleanup
+	}
+
+4. A try with only a finally (no catch) must still declare the exception. (A try without a catch doesnt satisy the handle or declare law)
+
+	void go() throws FooException {
+		
+		try {
+			x.doStuff();
+			
+		} finally {...}
+	}

@@ -1,0 +1,21 @@
+- List (when sequesnce matters)
+
+Collections that know about index position
+
+List know where something is in the list. You can have more than one element referencing the same object 
+
+
+- Set (when uniqueness matters)
+
+Collections that do not allow duplicates
+
+Sets know whether something is already in the collection. You can never have more that one element refrencing the same object (or more than one
+element refrencing two objects that are considered equal)
+
+
+- Map (When finding something by key matters)
+
+Collections that use key-value pairs
+
+Maps know the value associated with a given key. You can have two keys that refrence the same value, but you cannot have duplicate
+keys. Although keys are typically String names (So that you can make name/value property lists, for example) a key can be any object

@@ -1,0 +1,35 @@
+- A client and server applications communicate over a socket connection
+
+- A socket repersents a connection between two applications which may (or may not ) be running on two different phyisical machines
+
+- A client must know the IP address (or domain name) and TCP port number of the server
+
+- A TCP port number allow different clients to connect to the same machine but communicate with different applications running on
+that machine
+
+- The port numbers from 0 through 1023 are reserved for well-known services including http etc..
+
+- A client connects to a server by making a server socket 
+
+	Socket s = new Socket("127.0.0.1", 4200);
+	
+- Once connected, a client can get input and output streams from the socket. These are low-level connection streams
+
+	sock.getInputStream();
+	sock.getOutputStream();
+
+- to read text data from the server, create a BufferedReader, chained to an InputStreamReader, 
+which is chained to the input Stream from the socket
+
+- InputStreamReader is a 'bridge' stream that takes in bytes and converts them to text (character) data. 
+it's used primarily to act as the middle chain between BufferedReader and Socket input stream
+
+- To write text data to the server, create a PrintWriter chained directly to the Socket's output stream. 
+call the print() or println() methods to send strings to the server
+
+
+- servers use a serverSocket that waits for client requests on a particular port number
+
+- When ServerSocket gets a request, it accepts the request by making a Socket connection with the client
+
+	

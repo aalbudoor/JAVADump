@@ -1,0 +1,37 @@
+
+Steps for making and running a Servlet
+
+1.Find out where your servlet needs to be places
+
+- We'll assume we already have a web server up and running, and that its already configured to support servlets. 
+The most important thing is to find out exactly where your sevlet class files have to be placed in order for the server to see them. If you
+have a web site hosted by an ISP, the hosting service can tell you where to put your
+servlets
+
+
+2. Get the servlets.jar and add it to your class path.
+
+- servlets arent part of the standard java library; you need the servlets classes packaged into the servlets.jar file. you can download the srvelts
+classes from java.sun.com, or you can get them from your java-enabled web server. without these classes you wont be 
+able to compile your servlets
+
+
+3. Write a servlet class by extending HttpServlet
+
+	public class MyServletA extends HttpServlet {...}
+	
+
+4.Write an HTML page that inkoes your servlet
+
+- when the user clicks a link that refrences your servlet, the web server will find the servlet and invoke the apppropriate method depending on the 
+HTTP command (GET,POST etc)
+
+	<a href: "servlets/MyServletA"> this is the most amazing srvlet. </a>
+	
+
+5. Make your servlet and HTML page available to your server
+
+- This is completely dependednt on your web server. Your SIP may simply tell uou to dop it into a 'servlets' directory on your web site. 
+
+
+

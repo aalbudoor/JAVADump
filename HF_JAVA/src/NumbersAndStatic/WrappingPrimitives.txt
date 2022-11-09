@@ -1,0 +1,65 @@
+import java.util.ArrayList;
+
+public class WrappingAPrimitive {
+	
+	//Wrapping a value
+	
+	int i = 288;
+	Integer WrappingAPrimitiveObj = new Integer(i); // give the primitive to the wrapper constructor 
+	
+	//Autoboxing
+	
+	public void doNumsNewWay() {
+		
+//		Although there is not a method in ArrayList for add(int), the compiler does all the wrapping (boxing)
+//		for you. In other words, there really is an integer object stored in the ArrayList, but you get to pretend 
+//		that the Arraylist takes ints. (you can add both ints and integeres to an ArrayList<Integer>)
+		
+		ArrayList<Integer> WrappingAPrimitiveList = new ArrayList<Integer>();
+		
+		WrappingAPrimitiveList.add(3);
+		
+		int num = WrappingAPrimitiveList.get(0);
+	}
+	
+	
+	//Autoboxing works almost everywhere
+	
+	//Method Arguments
+//	
+//	void takeNumber(Integer i) {
+//		
+//	}
+	
+	
+//	int giveNumber() {
+//		return x;
+//	}
+//	
+	//Boolean expressions
+	
+	if (4 > 2 ) {
+		System.out.println("true");
+	}
+	
+	//operations on numbers
+	
+	Integer WrappingAPrimitive = new Integer(42);
+	
+	WrappingAPrimitive++;
+	
+	//---------
+	
+	Integer WrappingAPrimitive2 = new Integer(5);
+	Integer k = WrappingAPrimitive2 + 3;
+	
+	//Assignments
+	
+	//Double d = x;
+	
+}
+
+}
+	
+
+

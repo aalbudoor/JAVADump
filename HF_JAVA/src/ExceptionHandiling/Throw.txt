@@ -1,0 +1,49 @@
+-Im gonna TRY this risky thing and Im gonna CATCH myself if I fall
+
+	try {
+			//do risky thing 
+			
+			} catch (Exception ex) {
+			
+			//try to recover
+			//this code only runs if an Exception is thrown
+			
+	}
+
+
+
+
+1. Risky, exception-throwing code:
+
+
+	public void takeRisk() throws BadException { // this method MUST tell the world (by declaring) that it throws a BadException
+	
+		if (abandonAllHope) {
+		
+			throw new BadException();			//create a new Exception object and throw it
+		
+		}
+	
+	
+	}
+
+
+2. Your code that calls the risky method:
+
+	public void crossFingers() {
+	
+		try {
+			
+			anObject.takeRisk();
+			
+			} catch (BadException ex) {
+			
+			System.out.println("Aaarhh!");
+			
+			ex.printStackTrace();				//If you cant recover from the exception, atLeast get a stack trace using the printStack()
+												//method that all exceptions inherit 
+			
+		}
+	}
+			
+			

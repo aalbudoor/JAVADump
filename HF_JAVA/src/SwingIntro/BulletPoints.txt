@@ -1,0 +1,34 @@
+
+
+- Layout managers control the size and locations of components nested within other components
+
+- when you add a component to another component (sometimes referred to ad background component) the added
+component is controlled by the layout manager of the background component
+
+- A layout manager asks component for their preffered size, before making a decision about the layout.
+Depending on the layout manafers policies it might respect all some or none of 
+the components wishes
+
+- The borderLayout manafer lets you add a compoent to one of sive regions. You must specify the region when 
+you add the component, usinf the following syntax:
+	
+	add(BorderLayout.EAST, panel);
+
+- with BorderLayout, components in the north and south get their preffered width, but not height.
+The components in the center gets whatever is left over (unless you use pack())
+
+- the pack() method is like shrink-wrap for the compoenets; it uses te full preferred size of the center component, then
+determines the size of the frame using the center as a starting point, building the rest based on whats in the other regions
+
+- FlowLayout places components left to right, top to bottom, in the order in which they are added, wrapping to a new line of components
+only when the components wont fit horizontally
+
+- FLowLayout gives components their preferred size on both dimensions
+
+- BoxLayout lets you align compoenents stacked vertically, even if they could fit side-by-side.
+Like Flowlayout, BoxLayout uses the preferred sizr of the component in both dimensions
+
+- BorderLayout is the defualt layout manager for a frame; flowlayout is the default for a panel
+
+- If you want a panel to use something other than flow you have to call setLayout() to the panel
+

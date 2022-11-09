@@ -1,0 +1,64 @@
+
+//the argument to paintComponent() is declared as type Graphics
+
+	public void paintCOmponent(Graphics g) {}
+	
+	So the parameter 'g' IS=A graphics object. which menas it could be a subclass of Graphics
+	
+	
+	-- The object refrences by the 'g' parameter is actually an instance of the Graphics2D class
+	
+	- we care becuase there are things you can do with a Graphics2D refrence that you cant do with a Graphics refrence.
+	- A Graphics2D object can do more than a Graphics object, and it really is a Graphics2D object lurking behind the Graphics refrence
+	
+	-- remmeber your polymorphisim. The compiler decides which methods you can call based on the refrence type, not the object type.
+	- If you have a Dog object refrenced by an Animal refrence variable i.e
+	
+				Animal a = new Dog();
+				
+				you cannot say 
+				
+				a.bark();
+				
+				-even though you know its really a dog back there. the compiler looks at a, sees its of type Animal and 
+				-finds theres no remote control button for bark() in the animal class
+				
+				- but you can still get the object back to the Dog it really is by saying
+				
+				Dog d = (Dog) a;
+				d.bark();
+				
+- so the bottom line with the graphics object is this:
+
+- If you need to use a method from the Graphics2D class, you cant use the paintComponent parameter ('g') staright from the method
+But you can cast is with a new Graphics2D variable
+
+		Graphics2D g2d = (Graphics2D) g;
+		
+		
+	Methods you can call on a Graphics refrence:
+		
+		drawImage()
+		drawLine()
+		drawPolygon
+		drawRect(0
+		drawOvak()
+		fillRect()
+		fillROundRect()
+		setColo()
+		
+	To cast the Graphics2D object a Graphics2D Refrence:
+	
+	Graphics2D g2d = (Graphics2D) g;
+
+	
+	Methods you can call on a Graphics2D refrence:
+	
+	fill3DRect()
+	draw3DRect()
+	rotate()
+	scale()
+	shear()
+	transorm()
+	setRenderingHints()
+	

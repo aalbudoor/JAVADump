@@ -1,0 +1,84 @@
+	
+	Events
+
+	- TO make a GUi, start with a window usually a JFrame
+	
+	JFrame frame = new JFrame();
+	
+	- You can add widgets (buttons, text fields, etc) to the JFrame using:
+	
+	frame.getConent().add(button);
+
+	- unlike most other components, the JFRame doesnt let you add to it directely, so you must add to the JFrame's content pane
+	
+	- To make the window (JFrame) display, you must git it a size and tell it be visible
+	
+	frame.setSize(300,300);
+	frame.setVisible(true);
+	
+	- to Know when the user clicks a button (or takes some other 
+	action on the user interface) you need to listen for a GUI event
+	
+	- To listen for an event, you must register your interest with an event Source. 
+	An event source is the thing (button, checkbox, etc) that 'fires' an event based on 
+	user interaction
+	
+	- The listener interface gives the event source a way to call you back,
+	because the interface defines the method(s) the event source will call when an event happens
+	
+	- to register for events with a source, call the sources registration method,
+	Registration methods always take the form of: add<EventTYpe>Listener to register for a 
+	buttons ActionEvent, for example call:
+	
+	button.addActionListener(This);
+	
+	- impleemtns the listener interface by implementing all of the interfaces event-handling methods
+	put your event-handling code in the listener call-back method. for ActionEvents, the method is:
+	
+	public void actionPerformed(ActionEvent event) {
+		
+		button.setText("you clicked me");
+		
+	}
+	
+	- the event object passed into the event-handler method carries information about the event,
+	including the source of the event.
+	
+	
+	
+		Graphics
+		
+	- you can draw 2D graphics directly on to a widget.
+	
+	- you can draw a .gif or .jpeg directly on to a widget
+	
+	- to draw your own graphics (including a .gif or a .jpeg) make a subclass of JPanel and override the paintComponent() method.
+	
+	- the paintCOmponent(0 method is called by the GUI system.
+	YOU NEVER CALL IT YOURSELF. The argument to paintCOmponent()
+	is a Graphics object that gives you a surface to draw on, which will end up on
+	the screen. You cannot construct that object yourself
+	
+	- typical methods to call ob a Graphics object (the paintComponent parameter) are:
+	
+	g.setColor(Color.blue);
+	g.fillRect(20,50,100,120);
+	
+	- to draw a .jpg, construct an image using:
+	
+	Image image = new ImageIcon("catzilla.jpg").getImage();
+	
+	and draw uisng:
+	
+	g.drawImage(image, 3, 4, this);
+	
+	- The object refrenced by the GRaphics parameter to paintComponent() is actually an instance of the Graphics2D class.
+	The GRaphics 2D cclass has a variety of methods including:
+	
+	fill3DRect(), draw3DRect(), rotate(), scale(), shear(), transform()
+	
+	- to invoke the Graphics2D methods, you must cast the parameter
+	from a Graphics object to a Graphics2D
+	object:
+	
+	Graphics2D g2d = (Graphics2D) g;

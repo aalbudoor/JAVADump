@@ -1,0 +1,23 @@
+//uisng printWriter
+
+
+1. Make a socket connection to the server
+
+	Socket chatSocket = new Socket("127.0.0.1" , 5000);
+	
+
+
+2. Make a PrintWriter chained to the Sockets low-level (connection) outputStream
+
+	PrintWriter writer = new PrintWriter(chatSocket.getOutputStream());
+
+	- printWriter acts as its own bridge between character data and the bytes it gets from the Sockets
+	low-level output Stream. By chaining a PrintWriter to the Socket's output stream, we can write Strings to the Socket Connection
+	
+	- The socket gives us a low-level connection stream and we chain it to the PrintWriter by
+	giving it to the PrintWriter constructor
+	
+3. Writer (print) Something
+
+	writer.println("message to send");		//println() adds a new line at the end of what it sends
+	wrtier.print("another message"); //print() doesnt add the new line 

@@ -1,0 +1,14 @@
+Step 4: run rmiregistery
+
+1. bring up a terminal and start the rmi registery 
+
+- be sure to start it from a directoy that has access to your classes. The simplest way is to start it from your 'classes' directoy
+
+	terminal: rmiregistery
+
+
+2. Start the service
+
+- Bring up another terminal and start your sevice
+
+	terminal2: java MyRemoteImpl

@@ -1,0 +1,25 @@
+
+1. Make a FileOutputStream
+
+//Make a fileOutputStream object. fileOutputStream knows how to connect to (and create) a file 
+//If the file "MyGame.ser" doesnt exist it will be created automatically
+
+FileOutputStream fileStream = new FileOutputStream("MyGame.ser");
+
+2.Make an ObjectOutputStream
+
+//ObjectOutputStream lets you write objects, but it cant directly connect to a file. it needs to be fed a helper
+
+ObjectOutputStream os = new ObjectOutputStream(fileStream);
+
+3.Write the Object
+//serializes the object refrenced by character one, character two, character three, and write them to the file "MyGamer.ser"
+
+os.writeObject(characterOne);
+os.writeObject(characterTwo);
+os.writeObject(characterThree);
+
+4.Close the ObjectOutputStream
+//Closing the stream at the top closes the ones underneath, so the FileOutputStream (and the file) will close automatically
+
+os.close();

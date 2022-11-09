@@ -1,0 +1,23 @@
+//The difference between nested and inner
+
+Any java class thats defined within the scope of another class is knows as nested class. it doesnt
+matter if its anonymous, static, normal. if its inside another class its considered nested but non-static nested classes are often 
+reffered to as inner class,w
+hich is what we called them earlier in the book. The bottom line: all inner classes are nested but not all nested class are inner classes
+
+
+
+//Anonymous inner classes
+
+Imagine youre witrinting some gui code and realize you need an instance fo a class that implements ActionListenr, but your dont have an instance of an ActionListener.
+Then you realise that you also never wrote a class fot that listener. You have two choices at that point.
+
+1. write an inner class in your code, the way we did in out gui code, and then instantiate it anf pass that instance into the buttons event registration (addActionListener()) method.
+
+or
+
+2. create an anonymous inner class and instantiate it right there just in time. literaly where you are at t he point uou need the listener object. thats right
+you create the class and instance in the place where youd normally be supplying just the instance. Think about that for a momen-
+it means you pass the entire class where youd normally pass only an instance into a method argument
+
+see TestAnon.java

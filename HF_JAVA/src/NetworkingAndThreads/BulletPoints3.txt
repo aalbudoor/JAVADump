@@ -1,0 +1,32 @@
+- the static Thread.sleep() method forces a tread to leave the running state for atleast the duration passed to the sleep method.
+thread.sleep(20) puts a thread to sleep for 20 milliseconds
+
+- the sleep() method throws a checked exception (InterruptedException), so all calss to sleep() must be wrapped in a try/catch, or declared method
+
+- You can use sleep() to help make sure all the threads get a chance to run, although theres no gaurantee 
+that when a thread wakes up it'll go to the end of the runnable line. it might, for example, go right back to the front.
+in most cases, appropriately-timed sleep() calls are all you need to keep threads switching nicely
+
+- You can name a thread using the setName() method. all threads get a defualt name, but giving them an explicit name can help
+you keep track of threads, especially if youre debugging with print statments
+
+- You can have serious problems with threads if two or more threads have access to the same object on the heap
+
+- Two or more threads accesing the same object can lead to data corruption if one thread, for i.e leaves the running state while
+ still in the middle of manipulating an objects critical state
+ 
+ - To make you objects thread-safe, decide which statments should be treated as one atomic process.
+  In other words, decide which methods must run to completion before another thread enters the same method on the same object.
+  
+  - use synchronized keyword to modify a method declaration, when you want to prevent two threads from entering that method 
+  
+  - Every object has a single lock, with a single key for that lock. Most of the time we dont care about the lock; locks come into play
+  only when an object has synchronized methods
+  
+  - When a thread attempts to enter a synchronized method, the thread must get the key for the object 
+  (the object whose method thread is trying to run). if the key is not availiable (because another thread already has it), the thread goes into a 
+  kind of waiting lounge, until the key becomes available
+  
+  - Even if an object has more that one synchrozed method, there is still only one key. Once any thread has entered a synchronized method on 
+  that object, no thread can enter any other synchronized method on the same object. This restriction lets you protect your data by 
+  synchronizing any method that manipulates the data 

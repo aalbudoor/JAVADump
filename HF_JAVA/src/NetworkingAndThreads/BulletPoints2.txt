@@ -1,0 +1,32 @@
+- A thread with a lower case t is a seperate tread of execution in java
+
+- Every thread in java has its own call stack
+
+- A thread with a captial t is the java.lang.Thread class. A thread object repersents a thread of execution
+
+- A Thread needs a job to do. A threads job is an instance of something that implements Runnable interface
+
+- The runnable interface has just a single method, run() this is the method that goes on the bottom of the new call stack. in other words
+its the first method to run in the new thread
+
+- To launch a new thread, you need a Runnable to pass to the threads constructor 
+
+- A thread is in the NEW state when you have instantiated a Thread object but not yet called start()
+
+- when you start a thread (by calling the Threads objects start() method), a new stack is created, with the Runnables run() method on the bottom
+of the stack. The thread is now in the RUNNABLE state, waiting to be chosen to run
+
+- A thread is said to be RUNNING when the JVMs thread scheduler has selected it to be the currently running thread.
+On a single-processor machine, there can only be one currently-running thread
+
+- Sometimes a thread can be moved from the RUNNING state to a BLOCKED (temporarily non-runnable) state. A thread might be blocked because its waiting
+for data from a stream, or because it has gone to sleep, or because its waiting for an objects lock
+
+- Thread scheduling is not gauranteed to work in any particualr way, so you cannot be certain that threads will take turns nicely.
+Uou can help influence turn-taking by putting your threads to sleep periodacally.
+
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException ex) {
+			ex.printStackTrace();
+		}

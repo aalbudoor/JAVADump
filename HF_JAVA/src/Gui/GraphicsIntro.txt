@@ -1,0 +1,28 @@
+
+
+
+Three ways to put things on your GUI:
+
+	1. put widgets on a frame
+		
+		- Add buttons, menus, radio buttons, etc.
+		
+		frame.getCOntentPane().add(myButton);
+		
+		- the javax.swing package has more than a dozen widget types
+		
+	
+	2. Draw 2D graphics on a widget 
+	
+		- use a graphics object to paint shapes.
+		
+		graphics.fillOval(70,70,100,100);
+		
+		- you can paint a lot more than boxes and circles: the java
+		2D aPI is full of fun
+		
+	3. Put a JPEG on a widget
+	
+	you can put your own images on a widget.
+	
+	graphics.drawImage(myPic, 10, 10, this);

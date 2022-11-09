@@ -1,0 +1,25 @@
+
+
+How to launch a new Thread:
+
+1. Make a Runnable object (the threads job)
+
+	Runnable threadJob = new MyRunnable();			//Creates Runnable Object (button)
+	
+Runnable is an interface, youll write a class that implements the Runnable interface, and that class is where
+ youll define the work that a thread will perfrom. In other words, the method that will be run from the threads new call stack
+ 
+ 2. Make a Thread object (the worker) and give it a Runnable (the job)
+ 
+ 	Thread myThread = new Thread(threadJob);			//creates Thread Object (button)
+ 	
+ pass the new Runnable object to the thread constructor. This tells the new Thread Object which method to put on the bottom of the new stack 
+ (the Runnables run() method)
+ 
+ 
+ 3.Start the thread
+ 
+ 	myThread.start();		//connects the Thread object with the Runnable object using the run() method 
+ 	
+ Nothing happens until you call the threads start() method. Thats when you go from having just a Thread instance to having a new 
+ thread of execution. When the new thread starts up, it takes the Runnable object's run() method and puts it on the bottom of the new threads Stack

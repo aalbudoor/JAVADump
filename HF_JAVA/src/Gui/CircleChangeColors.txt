@@ -1,0 +1,39 @@
+
+// well make the circle change colors each time you click the button.
+
+
+Step 1:
+
+the frame is built with the two widgets (your drawing panel and a button). A listener
+is created and registered with the button. Then the frame is displayed and it just waits for the user to click
+
+Step 2:
+
+the user clicks the button and the button creates an event object and 
+calls the listener's event handler
+
+Step 3:
+
+the event handler calls repaint() on the frame. The system calls paintComponent() on 
+the drawing panel
+
+Step 4: 
+
+voila! a new color is painted because paintComponent() runs again, filling the circle with a random color.
+
+
+Q: wait a minute.. how do you put TWO things on a frame
+
+
+	- GUI layouts: putting more than one widget on a frame
+	
+	- by default, a frame has five regions you can add to. You can add only one thing
+	to each region of a frame, That one thing might be a panel that holds three other things including a panel that holds
+	two more things and.. you get the idea.
+	
+	// we call the two-argument add method,
+	that takes a region (using a constant)
+	and the widget to add to that region
+	
+	frame.getContentPane().add(BorderLayout.CENTER, button);
+ 

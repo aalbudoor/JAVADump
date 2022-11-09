@@ -1,0 +1,42 @@
+
+
+Classes and interfaces:
+
+
+1. interface ServiceServer implements remote :
+
+Interface a Regular old RMI remote interface for the remote service 
+(the remote service has the method for getting the service list and returning a selected service)
+
+2. class ServiceServerImpl implements ServiceServer
+
+The actual RMI remote service (extends UnicastRemoteObject). its job is to instantiate and store all the services 
+(the things that will be shipped to the client), 
+and register the server itself (ServiceServerImpl) with the RMI registery
+
+3. class ServiceBrowser
+
+The client. it builds a very simple GUI, does a lookup in the RMI registery to get the ServiceServer stub, then calls a remote method on it to 
+ the the list of services to display in the GUI list
+ 
+ 4. interface Service
+ 
+ this is the key to everything. This very simple interface has just one method, getGuiPanl(). 
+ Every service that gets shipped over to the client must implment this interface. this is what makes the whole ting UNIVERSAL! 
+ by implementing this interface, a service can come over even though the client has no idea what the actual class (or classes) are that 
+ make up those service.
+ All the client knows is that whatever comes over, 
+ it implements the Sevrice interface, so it must have a getGuiPanle() method
+ 
+ 
+ The client gets a serialized object as a result of calling getService(selectedSvc) on the ServiceServer stub, 
+ and all the client says to that object is "I dont know who or what you are, but I DO know that you implement the Service interface, so I know 
+ I can call getGuiPanl() method on you. And since getGuiPanel() returns JPanle, Ill just slap it into the browser GUI and start interacting with it"
+ 
+ 5. class DiceService implements Service 
+ 
+ Got dice? if not, but you need some, use this service to roll anywhere from 1 to 6 virtual dice for you
+ 
+ 6. class DayOfTheWeekSerivce implements Service
+ 
+ were you born on a Friday? type your birthday and find out.

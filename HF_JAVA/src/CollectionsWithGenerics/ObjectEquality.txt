@@ -1,0 +1,79 @@
+
+
+
+What makes two objects equal?
+
+
+1. Refrence Equality
+
+- Two refrences, one object on the heap.
+- Two objects that refer to the same object on the heap are equal.
+
+		if (foo == bar) {
+			//both refrences are referring 
+			//to the same object on the heap 
+			
+			}
+_______________________________________
+
+If two objects foo and bar are equal, foo.equals(bar) must be true, and both foo and bar must return the same value from hashCode(). 
+For a set to treat two objects as duplicates, you must override the hashCode() and equals() methods inherited from class object, so that you 
+can make two different objects be viewed as equal
+
+because remmeber the defualt behaviour for hashCode() to do is assign two refrences that refer to the same object, two unique numbers even though 
+they are two refrences referring to the same object. This means you must override Hashcode() and equals() method.
+
+
+________________________________________
+			
+
+2. Object equality
+
+- Two refrences, two objects on the heap, but the objects are considered meaningfully equivelant
+- If you want to treat two different song objects as equal (for example if you decide that two songs are the same if they have matching title variables),
+you must overide both the hashCode() and equals() methods from the inherited class
+
+	
+	if (foo.equals(bar) && foo.hashCode() == bar.hashCode()) {
+		//both refrences are referring to either a 
+		//single object, or two objects that are equal
+		
+		}
+		
+		
+_______________________
+
+How a HashSet checks for duplicates: hashCode() and equals()
+
+- When you put an object into a Hashset, it uses the objects hashcode value to determine where to put the object in the set.
+But it also compares the objects hashCode to the hashCode of all the other objects in the hashSet, and if theres no matching hashCode,
+ the hashset assumes that this new object is not a duplicate.
+ 
+ - in other words, if the hashCode are different, the HashSet assumes theres no way the objects can be equal!
+ 
+ - so you must override hashCode() to make sure the objects have the same value.
+ 
+ - Hashsets find a matching hashCode for two Objects- one your inserting and one thats already in the set
+ 
+ - The hashset will then call one of the objects equals() methods to see if these hashcode-matched objects really are equal.
+ 
+ - And if theyre equal, the hashset knows that the object youre attempting to add is a duplicate of something in the set, so the 
+ add doesnt happen 
+ 
+ - You get an exception, but the hashset's add() method returns a boolean to tell you whether the new objects was added. 
+ so if the add() method returns a false, you know the new object was a duplicate of something already in the set.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

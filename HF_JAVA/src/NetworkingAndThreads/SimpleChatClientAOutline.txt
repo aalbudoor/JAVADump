@@ -1,0 +1,32 @@
+// making a send-only version that sends messages to the server but doesnt get to read any of the messages
+//from the other participants
+
+
+	public class SimpleChatClientA {
+	
+	JTextField outgoing;
+	PrintWriter writer;
+	Socket sock;
+	
+	public void go() {
+		//make gui and register a listener with the send button
+		//call the setupNetworking() method
+		
+		}
+		
+	private void setUpNetworking() {
+		//make a socket, then make a printWriter
+		//assign the PrintWriter to writer instance variable
+		
+		}
+		
+	public class SendButtonListener implements ActionListener {
+		
+		public void actionPerformed(ActionEvent ev) {	
+			//get the text from the text field and
+			//send it to the server using the writer (a printWriter)
+		}
+	}	//close sendButtonListener inner class
+	
+}	//close outer class
+		

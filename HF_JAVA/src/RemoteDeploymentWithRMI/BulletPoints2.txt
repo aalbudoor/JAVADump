@@ -1,0 +1,24 @@
+
+
+- Servlets are java classes that run entirely on an HTTP web server
+
+- servlets are useful for running code on the server as a result of client interaction with a web page. 
+For i.e if a client submits information in a web page form, the servlet can process the information,
+ add it to a database, and send back a customized, confirmation page
+ 
+ - To compile a sevlet, you need the servlet package which are in the servlets.jar file. The servlet classes are not part of the java standard
+ libraries, so you need to download the servlets jar from the java.sun.com or get them from a servlet capable web server
+ 
+ - to run a servlet, you must have a web server capable of running servlets, such as the Tomcat server from apache.org
+ 
+ - your servlet must be placed in a location thats specific to your particular web server, 
+ so youll need to find that out before you try to run your servlets. If you have a web site hosted by an ISP that 
+ supports servlets, the ISP will tell you which directory to place your servlets in
+ 
+ - A typical servlet extends HttpServlet and overrides one or more servlet methods, such as doGet() or doPost()
+ 
+ - The web server starts the servlet and calls the appropriate method (doGEt(0, etc) based on the clients request
+ 
+ - the servlet can send back a response by getting a PrintWriter output stream from the response parameter of the doGet() method
+ 
+ - the servlet writes out an HTML page, complete with tags

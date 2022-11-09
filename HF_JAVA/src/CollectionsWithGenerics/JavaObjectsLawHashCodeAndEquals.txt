@@ -1,0 +1,39 @@
+
+- When you put an object into a Hashet, it uses the Objects hashcode value to determine where to put te object in the set.
+But it also compares the objects hashcode to the hashCode of all the other objects in the hashset, and if theres no matching hashcode, 
+the hashset assumes that this new object is not a duplicate
+
+- In other words if the hashCodes are different, the Hashset assumes theres no way the objects can be equal.
+
+- so you must override hashCode() to make sure the objects have the same value
+
+- Hashsets finds a matching hashcode for two objects - one your inserting and one already in the set - the hashset will then call one of the objects equals()
+methods to see if these hashcode-matched objects really are equal.
+
+- and if they are equal, the ashset knows that the object your attempting to ass is a duplicate of something in the set, so the add doesnt happen
+
+
+
+
+
+Java objects for Hashcode() and equals() 
+
+- If two objects are equal, they MUST have matching hashCodes
+
+- If two objects are equal, calling equals() on either object MUST return true. In other words, if (a.equals(b)) then (b.equals(a))
+
+- If two objects have the same hashcode value, they are NOT required to be equal. But if they're equal, they must have the same hashCode 
+value
+
+- So if you override equals() you MUST override hashCode().
+
+- The defualt behaviour of hashCode() is to generate unique integer for each object on the heap. So if you dont override hashCode() in a class, 
+no two objects of that type can EVER be considered equal
+
+- The default behaviour of equals() is to do an == comparison. In other words, to test
+whether the two refrences refer to a single object on the heap. So if you dont override equals() in a class, no two objects can EVER be considered
+equal since refrences to two differnt objects will always contain a different bit pattern.
+
+	a.equals(b) must also mean that a.hashCode() == b.hashCode()
+	
+	but a.hashCode() == b.hashCode() does NOT have to mean a.equals(b)

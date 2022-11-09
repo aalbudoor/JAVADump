@@ -1,0 +1,199 @@
+
+3 important things about generics
+
+1. Creating instances of generifies classes (like ArrayList)
+
+	when you make an ArrayList, you have to tell it the type of objects youll allow in the list, just as you do with plain old arrays
+	
+	new ArrayList<Song>
+	
+2. Declaring and assigning variables of generic types
+
+	How does polymorphisim really work with generic types? if you have an ArrayList<Animal> refrence variable, you can assign an ArrayList<Dog>
+	to it? what about a List<Animal> refrence? Can you assign an ArrayList<Animal> to it? youll see..
+	
+	List<Song> songList =
+						new ArrayList<Song>()
+						
+3. Declaring (and invoking) methods that take generic types
+
+	if you have a method that takes as a parameter, say an ArrayList of Animal objects, what does that really mean? Can you
+	also pass it an ArrayList of Dog Objects> we'll look at some polymorphisim issues that are very different from the way you write plain
+	 old arrays
+	 
+	 (this is acrually the same as #2, but shows you how important we think)
+	 
+	 void foo(List<Song> list)
+	 x.foo(songList)
+	 
+	 
+Using generic classes:
+
+1. the class decleration
+
+2. the method declerations that let you add elements 
+
+Think of "E" as a stand-in for "the type of element this collection to hold and return"  (E is for Element)
+so new ArrayList<Song> means that "E" becomes "Song", in any method or variable decleration that uses "E".
+
+public class ArrayList<E> extends AbstractList<E> implements List<E> ... {
+
+	public boolean add(E o) 
+	
+		//heres the important part. Whatever "E" is determines what kind of things youre allowed to add to the ArrayList
+		
+		//more code
+	
+	}
+_______________________________
+
+Using type parameters with ArrayList
+
+This code:
+
+	ArrayList<String> thisList = new ArrayList<String>
+
+means ArrayList:
+		
+		public class ArrayList<E> extends AbstractList<E> ... {
+		
+		
+			public boolean add(E o) 
+			//more code
+		}
+		
+is treated by the compiler as:
+		
+		public class ArrayList<String> extends AbstractList<String> ... {
+			
+			public boolean add(String o) 
+			//more code
+			
+	}
+	
+- in other words the E is replaces  by the real type that you use when you create the arrayList
+
+__________________________________________
+
+Using generic methods
+
+- A generic class means that the class decleration includes type parameter.
+
+- a generic method means that the method decleration uses a type paramter in its signature.
+
+1. Using a type parameter defined in the class decleration:
+	
+	public class ArrayList<E> extends AbstractList<E>
+	
+		public boolean add(E o)  //you vcan use the "E" only her becuase its already been defined as part of the class
+
+- When you declare a type parameter for the class, you can simply use that type any place that youd use a real class or interface type.
+The type declared in the method argument is essentially replaced with the type you use when you instantiate
+the class
+
+
+2. Using a type parameter that was NOT dedined in the class decleration
+
+	public <T extends Animal> void takeThing(ArrayList<T> list)
+	
+- this method says that T can be "Any type of animal"
+
+- Here we can use <T> because we declared "T" earlier in the method decleration
+
+
+____________________________________________
+
+Here is where it gets weird
+
+This:
+
+	public <T extends Animal> void takeThing(ArrayList<T> list)
+	
+
+is not the same as this:
+	
+	public void takeThing(ArrayList<Animal> list)
+	
+both are legal, but theyre DIFFERENT
+
+- the first one where <T extends Animal> is part of the method decleration, means that any ArrayList declared as typ e that is Animal,
+ or one of Animals subtypes (like cat or dog), is legal so you could invoke the top method using an ArrayList<Dog>, ArrayList<Cat>, 
+ or ArrayList<Animal>
+ 
+ - The second one where the method argument is ArrayList<Animal> list means that only an ArrayList<Animal> is legal. while the 
+ first version takes an ArrayList of any type that is of type Animal (like Animal,Dog,Cat) the second version takes ONLY of type Animal
+ 
+ - for now, just know that the first version is legal, and that it means you can pass in a ArrayList object instantiated as 
+ Animal or any Animal subclass
+ 
+ ____________________________________________
+ 
+ 
+ In generics "extends" means  "extends or implement"
+ 
+ - in generics the keyword "extends" really means "is-a" and works for BOTH classes and interfaces
+ 
+ 	public static <T extends Comparable<? super T>> void sort(List<T> list)
+ 	
+ - comparrable is an interface, so this Really reads, "T must be a type implements the comparable interface"
+ 
+ - it doesnt matter wheter the thing on the right is a class or interface.. you still say extends
+ 
+ 
+ ----------------
+ 
+ - we can pass the ArrayList<Song> to the Sort() method only if the Song class implements Comparable, since thats the way the sort() 
+ method was declared
+ 
+ 			java.lang.Comparable
+ 			
+ 		public interface Comparable<T> {
+ 			
+ 			int compareTo(T o);
+ 		}
+ 		
+ - it looks like the compareTo() method will be called on one Song object, passing that Song refrence to a different Song. The Song running the compareTo() 
+ method has to figure out if the Song it was passed should be sorted higher or lower, or the same in the list
+ 
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+ 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

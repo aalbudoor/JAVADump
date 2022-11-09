@@ -1,0 +1,75 @@
+
+
+FINALLY: for the things you want to do no matter what
+
+- A finally block is where you put code that must run regardless of an exception:
+
+
+try {
+	
+	turnOvernOn();
+	x.bake();
+	
+	} catch (BakingException ex) {
+	
+		ex.printStackTrace();
+	
+	} finally {
+	
+		turnOvenOff();
+	}
+	
+	*IF the try block fails (an exception), flow control immediately moves to the catch block. when
+	the catch block completes, the finally block runs. When the finally block completes, the rest of 
+	the method continues on 
+	
+	* If the try block succeeds (no exception) flow control skips over the catch block and moves to 
+	finally block. When the finally block completes, the rest of the method continues on.
+	
+	* If the try or catch block has a return statement, finallly will still run! FLow jumps to the finally,
+	then back to the return.
+	
+
+WHen you dont want to handle an exception...JUST DUCK IT
+
+- you can duck it by declaring it 
+
+	public void foo()  throws ReallyBadException {
+		
+		//call risky method without try/catch block
+		
+		laundry.doLaundry();
+	}
+	
+	
+* The JVM shuts down even if the main() method ducks the exception
+
+public class Washer {
+
+	Laundry laundry = new Laundry();
+	
+		public void foo()  throws ClothingException {
+			
+			//call risky method without try/catch block
+			
+			laundry.doLaundry();
+		}
+		
+		public static void main (String[] args) throws ClothingException {
+		
+				Washer a = new Washer();
+				a.foo();
+		}
+	}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	

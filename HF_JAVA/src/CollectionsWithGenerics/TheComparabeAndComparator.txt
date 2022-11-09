@@ -1,0 +1,11 @@
+If you pass a Comparator to the sort() method, the sort order is determined by the Comparator rather than the elements own comapreTo() method 
+
+
+-- Rules are
+
+1. Invoking the one-argument 'sort(List o) method means the list elements compareTo(0 method determines the order. So the elements in the list
+MUST implement the comparable operator
+
+
+2. Invoking sort(List o, Comparator c) means the list elements compareTo() method will NOT be called, and the Comparators compare() method will
+be used instead. That means the elemnts in the list do NOT need to implement the comparable interface.

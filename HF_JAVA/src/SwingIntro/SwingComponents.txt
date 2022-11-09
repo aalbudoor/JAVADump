@@ -1,0 +1,152 @@
+
+
+Intro to JTextField
+
+- Constructors 
+	
+	JTextField field = new JTextField(20) //means 20 columns not 20 pixels(defines preferred width)
+	
+	JTextField field = new JTextField("your name")
+	
+
+	How to use it 
+	
+1.Get text out of it
+
+System.out.println(field.getText());
+
+2. put text in it 
+
+field.setText("whatever");
+field.setText("") //this clears the field 
+
+3.GEt an ActionEvent when the user presses return or enter
+
+field.ActionListener(myActionListener)		//You can also register for key events if you really want to hear
+											// about it every time the user presses a key
+											
+4. select/Highlight the text in the field
+
+	field.selectAll();
+
+5. Put the cursor back in the field (so the user can just start typing)
+
+	field.requestFocus();
+
+______________________________________________
+
+Intro to JTextArea
+
+	Constructor:
+
+JTextArea text = new JTeaxtArea(10,20) // 10 means 10 lines(sets preferred height)
+									// 20 means 20 lines (sets preferred width)
+
+How to use it 
+
+1. Make it have a vertical scroll bar
+
+	JScrollPane scroller = new JScrollerPane(text); //Make a JScrollPane and give it the text area that its going to scroll for 
+
+	text.setLineWrap(true) //Turn on line wrapping
+	
+	scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+	scroller.setHorizontalScrollBarPolicy(ScrollPaneCOnstant.HORIZONTAL_SCROLLBAR_NEVER);
+	
+	pane.add(scroller); //important!! you give the text area to the scroll pane (Through the scroll pane cosntructor)
+						//then add the scroll pane to the panel. you dont add the text area direcly to the pane
+						
+2.Replace the text thats in it
+
+	text.setText("Not all those who are lost are wandering");
+
+3. Append the text thats in it 
+		
+		text.append("button clicked");
+
+4. Select/Highlight the text in the field
+
+	text.selectAll();
+
+5. Put the cursot back in the field (so the user can just start typing)
+
+	text.requestFocus();
+
+___________________________________________
+
+
+Intro to JCheckBox 
+
+
+	Constructor 
+	
+	JCheckBox check = new JCheckBox(Goes to 11);
+	
+
+How to use it 
+
+1. Listen fot an item event (when its selected or deselected)
+	
+	check.addItemListener(This)
+	
+2.Handle the event (and find out whether or not its selected)
+
+	public void itemStateChanged(ItemEvent  ev) {
+	
+		String onOrOff = "off";
+		
+		if (check.isSelected()) onOrOff = "on"
+		System.out.println("Check box is " + onOrOff);
+		
+		}
+		
+3. Select or deselect it in code
+
+	check.setSelected(true);
+	check.setSelected(false);
+
+____________________________________________
+
+Intro to JList
+
+Constructor: JList entries take an array of any object type. They dont have to be Strings, but a String repersentation will appear in the list 
+
+	String[] listEntries = {"alpha", "beta" , "gamma", "delta", "epsilon, "zeta" , "eta", "theta"};
+	
+	JList list = new JList(listEntries);
+	
+
+How to use it
+
+1. Make it a vertical scrollBAr: this is just like the JTextArea -- you make a JScrollPane (and give it the list), then add the scrollPAne 
+																	(NOT the list) to the panel
+									
+		
+	JScrollPane scroller = new JScrollPane(list);
+	scroller.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+	scroller.setHorizontalScrollBarPolicy(ScrollPaneCOnstant.HORIZONTAL_SCROLLBAR_NEVER);
+
+2. set the number of lines to show before scrolling
+
+	list.setVisibleRowCount(4);
+
+3. Restrict the user to selecting only ONE thing at a time
+	
+	list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+4.REgister for list selection events
+	
+	list.addListDelectionListeners(this);
+
+5.Handle events (find out which thing in the list was selected)
+	
+	public void calueChanged(ListSelectionEvent lse) {
+		 
+		if (!lse.getValueIsAdjusting()) {					//getSelectedValue9) actually returns an Object. A lsit isnt limited to only String objects
+			
+			String selection = (String) list.getSelectedValue();
+			System.out.println(selection);
+
+
+
+

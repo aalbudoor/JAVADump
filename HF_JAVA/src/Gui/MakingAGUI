@@ -1,0 +1,31 @@
+1. make a fram (a JFrame)
+
+	JFrame frame = new JFrame();
+
+2.Make a widget (button, text field, etc).
+
+	JButton button = new JButton("click me");
+
+3. Add the widget to the frame
+
+	frame.getContentPane().add(button);
+	
+	*you dont add things to the frame directly. Think of the frame as the trim around the window, and you add
+	things to the window pane
+
+4.Display it (give it a size and make it visible) 
+
+	frame.setSize(300,300);
+	frame.setVisible(true);
+	
+	
+-------------------------------
+
+Getting a user event (Event-handling)
+
+	public void () {
+	
+		button.setText("I've been clicked");
+	}
+
+	

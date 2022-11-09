@@ -1,0 +1,15 @@
+
+- Java web start technology lets you deploy a stand-alone client application
+
+- java web start includes a 'helper app' that must be installed on the client (along with java)
+
+- a Java web start (JWS) app has two pieces: an executable JAR and a .jnlp file
+
+- a .jnlp file is a simple xml document that describes your JWS application. it includes tags for specifying the name and location of the JAR,
+and the name of the class wiht the main() method 
+
+- When a browser gets a .jnlp file from the server (because the user clicked on a link to the .jnlp file), the browser starts up the JWS helper app.
+
+- the JWS helper app reads the .jnlp file and requests the executable JAR from the web server.
+
+- When the JWS gets the JAR, it inokes the main() method (specified in the .jnlp file)

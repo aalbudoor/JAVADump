@@ -1,0 +1,35 @@
+- you can save an objects state by serializing the object
+
+- to serialize an object, you need an ObjectOutputStream(from the java.io package)
+
+- Streams are either connection streams or chain streams
+
+- connection streams can repersent a connection to a source ot destination, typically a file, network socket connection, or the console
+
+- Chain streams cannot connect to a source or destination and must be chained to a connection (or other) stream
+
+- To serialize an object to a file, make a FileOutputStream and chain it into an ObjectOutputStream
+
+- to serialize an object, call writeObject(the object) on the ObjectOutput Stream. You do not need to call methods on the FileOutputStream.
+
+- to be serialized, an object must implement the Serializable interface. if a superClass id the class implements serializable, the subclass 
+will automatically be serializable even if it does not specifically declare implements Serializable.
+
+- When an object is serialized, its entire object graph is serialized. That means any objects refrenced by the serialized objects 
+instance variables are serialized, and any objects refrenced by those objects.. and so on
+
+- If any object in the graph is not serializable, an exception will be thrown at runtime, unless the instance variable reffereing to the object is skipped
+
+- Mark an instance variable with the transient keyword if you want serialization to skip that variable. The variable will be restored as null
+(for object refrences) or default values (for primitives).
+
+- During deserializatio, the class of all Objects in the graph must be available to the JVM
+
+- You read objects in (using readObjects()) in the order in which they were originally written.
+
+- the return type of readObject() is type object, so deserialized objects must be cast to their real type.
+
+- Static varibales are not serialized! it doesnt make sense to save a static variable value as part of a specific object state, since all
+objects of that type share only a single value- the ones in the class 
+
+ 

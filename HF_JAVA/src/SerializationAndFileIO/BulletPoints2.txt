@@ -1,0 +1,19 @@
+- to write a text file, start with a FileWriter connection Stream
+
+- Chain the FileWriter to a BufferedWriter for efficiency.
+
+- A File Object repersents a file at a particular path, but does not repersent the actual contents of the file
+
+- With a File Object you can create, traverse, and delte directories
+
+- Most streams that can use a String filename can use a File objcet as well, and a file object can be safer to use
+
+- to read a text file, start with a FileReader connection Stream.
+
+- chain the fileReader to a bufferedReader for efficiency
+
+- To parse a text file, you need to be sure the file is written with some way to recognize the 
+different elements. A common approach is to use some kind of character to seperate the individual pieces
+
+- Use the String split() method to split a String up into individual tokens. A string with one seperator will have two tokens, one 
+on each side of the seperator. The seperator doesnt count as a token

@@ -1,0 +1,59 @@
+
+Step two: make a remote Implementation
+
+1. Implement the Remote interface
+
+- your service has to implement the remote interface - the one with the methods your client is going to call.
+
+		public class MyRemoteImpl extends UnicastRemoteObject implements MyRemote {
+		
+			public String sayHello() {
+			
+				return "Server says, hello";
+			}
+		
+		//more code in class
+	}
+
+- the compiler makes sure youve implemented all the methods from the interface, you implement in this case theres only one.
+
+
+2. Extend UnicastRemoteobject
+
+- in order to work as a remote service object, your object needs some functionality related to being 'remote'. 
+The simplest way is to extend UnicastRemoteObject and let the class do the work for you
+
+	public class MyRemoteImpl extends UnicastRemoteObject implements MyRemote {
+	
+
+3. write a no-arg constructor that declares a RemoteException
+
+- your new superclass, UnicastRemoteEbohect has a little proble - its constructor throws a Remote exception. the only way to deal with it is to declare
+a constructor for your Remote implementation
+
+	public MyRemoteImpl() throws RemoteException { }
+	
+- you dont have to put anything in the constructor. You just need a way to declare that your superclass constructor throws an exception.
+
+
+4. Register the Service with the RMI registery
+
+	try {
+	
+		MyRemote service = new MyRemoteimpl();
+		Naming.rebind("Remote hello" , service);
+		
+	} catch (Exception ex) {...} 
+	
+- on line 44 give your service a name (that the clients can use to look it up in the registery) and register it with the RMI registery. 
+When you bind the service object, RMI swaps the service for the stub and puts the stub in the registery.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+			

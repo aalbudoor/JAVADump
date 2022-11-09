@@ -1,0 +1,52 @@
+
+The following example shows what can happen when two threads (Ryan and monica) share a single object (the bank account)
+
+The code has two classes, BankAcount and MonicaAndRyanJob class implements runnable, and repersents the behaviour
+that ryan and monica both have - checking the balance and making withdrawls.
+
+But ofcourse, each thread falls asleep in between checking the balance and actually making the withdrawl.
+
+The monicaAndRyanJob class has an instance variable of type BankAccount, that repersents their shared account
+____________________________________________
+
+The code works like this:
+
+1. Make one instance of RyanandMonicaJob
+
+- The RyanandMonicaJob class is the runnable (the job to do), and since both Monica and Ryan do the same thing (check balance and withdraw money)
+We need only one instance
+
+	RyanandMonicaJob theJob = new RyanandMonicaJob();
+
+2. Make two threads with the same Runnable (the RyanandMonicaJob instance)
+
+	Thread one = new Thread(theJob);
+	Thread two = new Thread(theJob);
+	
+3.Name and start the Threads
+	
+	one.setName("Ryan");
+	two.setName("Monica");
+	one.start();
+	two.start();
+	
+4. Watch both threads execute the run() method 
+	(Check the balance and witdraw)
+	
+- one thread repersents Ryan and the second thread repersents Monica, bot threads continually check the 
+balance and then make a withdrawal, but only if its safe.
+
+	if (account.getBalance() >= amount) {
+		
+		try{
+			Thread.sleep(500);
+		} catch (InterruptedException ex) {
+			ex.printStackTrace();
+		}
+_____________________________
+
+In the run() method, do exactly what Ryan and Monica would do - check the balance and, if theres enough money, make the withdrawl
+
+This should protect against overdrawing the account
+
+Except..Ryan and monica always fall asleep after they check the balance but before they finish the withdrawl 

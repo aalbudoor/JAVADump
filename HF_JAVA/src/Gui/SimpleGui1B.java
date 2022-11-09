@@ -1,0 +1,53 @@
+package Gui;
+import javax.swing.*;
+import java.awt.event.*;
+
+//implemnt the interface. This says,
+//"an instance of SimpleGui1B IS-A ActionListener" (the button will give events only to ActionListener implementers)
+
+
+public class SimpleGui1B implements ActionListener {
+	
+	JButton button;
+	
+	public static void main(String[] args) {
+	
+	SimpleGui1B gui = new SimpleGui1B();
+	gui.go();
+	
+	}
+	
+	public void go() {
+	JFrame frame = new JFrame();
+	button = new JButton("click me");
+	
+	//register your interest with the button. This says to the button.
+	//"Add me to your list of listeners" the argument you pass MUST be an object from
+	//a class that implements ActionListener
+	
+	button.addActionListener(this); 
+	
+	frame.getContentPane().add(button);
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	frame.setVisible(true);
+	
+	}
+	
+		//implements the actionListener interfaces actionPreformed() method. This is the actual event-handling method!
+		// the button calls this method to let you know an event happened. it sends you an ActionEvent object
+		//as the argument, but we dont need it. Knowing the event happened is enough
+	public void actionPreformed(ActionEvent event) {
+		
+		button.setText("Ive been clicked");
+	
+	}
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			button.setText("Ive been clicked");
+			
+		}
+
+
+}

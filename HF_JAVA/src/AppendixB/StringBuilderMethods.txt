@@ -1,0 +1,35 @@
+String and StringBuffer 
+
+Both String and StringBuffer/StringBuilder classes have:
+
+char charAt(int index) 	//what char is at a certain position
+int length() 	//how long is this 
+String substring(int start, int end)		//get a part of this
+String toString() 		//whats the string value of this
+
+
+To concatenate Strings:
+
+String concat(string) 	//for the string class
+String append(String)		//for StringBuffer anf StringBuilder
+
+
+The string class has :
+
+String replace(char old, char new)	//replaces all occurances of char
+Streing substring(int begin, int end)		//get a portion of a string
+char[] toChrArray()		//convert to an array of chars
+String toLowerCase()		//convert all characters to lower case
+String toUpperCase()		
+Streing trim()			//remove white space from the ends
+String valueOf(char[])		//make a string out of a char array
+String valeOf(int i)		//other primitives are supposrted as well
+
+
+The stringBuffer/StringBuilder classes have:
+
+StringBxxxx deleter(int start, int end)		//delete a portion
+StringBxxxx insert(int offset,any primitive of type char[] int )		//delete a portion
+
+
+......Check pg 696 and online for further excamples of ehat string classes have

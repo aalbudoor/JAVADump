@@ -1,0 +1,33 @@
+
+
+-An object on one heap cannot get a normal java refrence to an object on a different heap (which means running on a different JVM)
+
+- Java remote method invocation (RMI) makes it seem like youre calling a method on a remote object (i.e an object in a different JVM), but you arent
+
+- When a cleint calls a method on a remote object, the client is really calling a method on a proxy of the remote object. 
+The proxy is called a 'stub'
+
+- A stub is a client helper object that takes care if the lo-level networking details (socket, strams, serialization etc)
+ by packaging and sending method calls to the server
+ 
+ - To build a remote service (in other words, an object that a remote client can ultimetely call methods on), you must start with a remote interface
+ 
+ - A remote interface must extend the java.rmi.Remote interface, and all methods must declare RemoteException
+ 
+ - your remote service implements your remote interface
+ 
+ - Your remote service should extend UnicastRemoteObject. (Technically there are other ways to create a remote object, but extending
+  UniCastRemoteObject is simplest)
+  
+ - your remote service class must have a constructor, and the constructor must declare a RemoteException (because the superclass constructor declares one)
+ 
+ - your remote service must be instantiated, and the object registered with the RMI registery
+ 
+ - To register a remote service, use the static Naming.rebind("Service Name" , serviceInstance);
+ 
+ - The RMI registery must be running on the same machine as the remote service, before you try to register a remote object with the RMI registery
+ 
+ - the client looks up your remote service using the static Naming.lookup("rmi://MyHostName/ServiceName");
+ 
+ - Almost everything related to RMI can throw a RemoteException. this includes regestring or looking up a service in the registery, and all 
+ remote method calls from the client to the stub. 

@@ -1,0 +1,28 @@
+//Deserialization is alot like serialization but in reverse
+
+1.Make a FileinputStream
+
+FileInput stream fileStream = new FileInputStream("MyGame.ser")		//If the file "MyGame.ser" doesnt exist, youll get an exception
+
+
+2. Make an ObjectInputStream
+
+ObjectInputStream os = new ObjectInputStream(fileStream); 	//ObjectInputStream lets you read objects, but it cant directly connect to a file
+															//it needs to be chained to a connection stream, In this case a FileInputStream
+
+3. read the Objects
+
+Object one = os.readObject();
+Object two = os.readObject();			//Each time you say readObject(), you get the next object in the stream. so youll read them back in
+Object three = os.readObject();		//the same order in which they were written. Youll get a exception if you try to read more objects that you wrote
+
+4.Cast the Objects
+
+GameCharacter elf = (GameCharacter) one;
+GameCharacter troll = (GameCharacter) two;				//The return value of readObject() is type Object (just like with ArrayList)
+GameCharacter wizard = (GameCharacter) three;			//So you will have to cast it back to the type you know it really is 
+
+
+5.Close the ObjectInout
+
+os.close()		//closing the stream at the top closes the ones underneath, so the FileInputStream (and the file) will close immediately 
